@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "ball.png",
+	"frame": {"x":0,"y":0,"w":720,"h":720},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":720},
+	"sourceSize": {"w":720,"h":720}
+},
+{
+	"filename": "starfield.jpg",
+	"frame": {"x":720,"y":0,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "spritesheet@2x.png",
+	"format": "RGBA8888",
+	"size": {"w":1232,"h":720},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4b2207cdef76e55fb8553e7335e220b3:e33174e202a8cbea206bb14aa8d10786:f3ee6789f8b585edc2d6a40603ca4984$"
+}
+}

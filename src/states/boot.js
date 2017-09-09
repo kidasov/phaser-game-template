@@ -1,8 +1,6 @@
-class Boot extends Phaser.State {
-    constructor() {
-        super();
-    }
+import Phaser from 'phaser';
 
+class Boot extends Phaser.State {
     init() {
     }
 
@@ -12,6 +10,8 @@ class Boot extends Phaser.State {
     create() {
         this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         this.game.input.maxPointers = 1;
-        this.game.state.start("preload");
+        this.game.state.start('preload');
     }
 }
+
+export default Boot;

@@ -1,25 +1,22 @@
+import Phaser from 'phaser';
+import PIXI from 'pixi';
+
+import Boot from './states/boot';
+import Preload from './states/preload';
+import Game from './states/game';
+
 class GameName extends Phaser.Game {
     constructor(width, height, suffix, strSuffix) {
-        super(width, height, Phaser.CANVAS, "", {
-            preload: () => {
-                let scriptsArray = [
-                    {key: "boot", path: "src/states/boot.js"},
-                    {key: "preload", path: "src/states/preload.js"},
-                    {key: "game", path: "src/states/game.js"}
-                ];
-                this.loadScripts(scriptsArray);
-            },
+        super(width, height, Phaser.CANVAS, '', null);
 
-            create: () => {
-                this.displaySuffix = suffix;
-                this.strDisplaySuffix = strSuffix;
-                this.state.add("boot", Boot);
-                this.state.add("preload", Preload);
-                this.state.add("game", Game);
+        this.state.add('boot', Boot);
+        this.state.add('preload', Preload);
+        this.state.add('game', Game);
 
-                this.state.start("boot");
-            },
-        });
+        this.state.start('boot');
+
+        this.displaySuffix = suffix;
+        this.strDisplaySuffix = strSuffix;
     }
 
     getImagePathWithSuffix(path, extension) {
@@ -45,20 +42,19 @@ class GameName extends Phaser.Game {
 
     const DIMENSION = {
         HEIGHT: 480,
-        WIDTH: 320,
+        WIDTH: 320
     };
 
     let displaySuffix = 1;
-    let strDisplaySuffix = "";
+    let strDisplaySuffix = '';
 
-    if (windowWidth > DIMENSION.width || window.height > DIMENSION.height) {
+    if (windowWidth > DIMENSION.width || windowHeight > DIMENSION.height) {
         displaySuffix = 2;
-        strDisplaySuffix = "@2x"
+        strDisplaySuffix = '@2x';
     }
 
     let gameWidth = DIMENSION.WIDTH * displaySuffix;
     let gameHeight = DIMENSION.HEIGHT * displaySuffix;
-
 
     PIXI.DisplayObject.prototype.setPosition = function(x, y) {
         this.x = game.displaySuffix === 2 ? x * 2 : x;
@@ -70,11 +66,12 @@ class GameName extends Phaser.Game {
             this.inputEnabled = true;
             this.input.enableDrag();
             this.events.onDragStop.add(function(sprite, pointer) {
-                    var x = game.displaySuffix === 2 ? sprite.x * 0.5 : sprite.x;
-                    var y = game.displaySuffix === 2 ? sprite.y * 0.5 : sprite.y;
+                let x = game.displaySuffix === 2 ? sprite.x * 0.5 : sprite.x;
+                let y = game.displaySuffix === 2 ? sprite.y * 0.5 : sprite.y;
+                console.log(`moved to: ${x} : ${y} `);
             }, this);
         }
     };
-    
+
     let game = new GameName(gameWidth, gameHeight, displaySuffix, strDisplaySuffix);
 })();
